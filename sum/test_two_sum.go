@@ -11,7 +11,7 @@ func twoSumOld(nums []int, t int) []int {
 	for i := 0; i < len(nums); i++ {
 		if v, ok := hash[t-nums[i]]; ok {
 			if i != v {
-				return []int{i, v}
+				return []int{v, i}
 			}
 		} else {
 			hash[nums[i]] = i

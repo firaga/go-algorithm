@@ -6,10 +6,10 @@ import (
 )
 
 func TestTowSum(t *testing.T) {
-	nums := []int{3, 3, 3, 4}
-	target := 7
+	nums := []int{2, 7, 11, 15}
+	target := 9
 	res := twoSumOld(nums, target)
 	fmt.Println(res)
-	res2 := twoSumOld(nums, target)
+	res2 := twoSum(nums, target)
 	fmt.Println(res2)
 }
