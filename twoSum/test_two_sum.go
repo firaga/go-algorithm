@@ -1,4 +1,4 @@
-package sum
+package twoSum
 
 //1. hash,减少一次遍历
 //2  两个值的index不能相等
