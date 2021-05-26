@@ -3,9 +3,7 @@ package quickSort
 import "fmt"
 
 func quickSort(in []int) {
-	if len(in) < 2 {
-		return
-	}
+
 	//fmt.Println(in)
 	pivot := len(in) - 1
 	var traversalPtr, minPrt int
@@ -17,7 +15,11 @@ func quickSort(in []int) {
 			minPrt++
 		}
 	}
+	if len(in) <= 2 {
+		return
+	}
 	fmt.Println("minPtr", minPrt)
+	//if minPrt-2 >= 0 {
 	quickSort(in[:minPrt-1])
-	quickSort(in[minPrt-1:])
+	quickSort(in[minPrt:])
 }
