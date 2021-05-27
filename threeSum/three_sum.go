@@ -18,9 +18,11 @@ func threeSum(nums []int) [][]int {
 		}
 		reversFirstValue := -nums[first]
 		for second = first + 1; second < l; second++ {
+			s := second
 			if second > first+1 && nums[second] == nums[second-1] {
 				continue
 			}
+			t := l - 1
 			for third = l - 1; third > second; {
 				if third < l-1 && nums[third] == nums[third+1] {
 					third--
@@ -37,6 +39,9 @@ func threeSum(nums []int) [][]int {
 					//second+third < -first
 					second++
 				}
+			}
+			if s == third || t == second {
+				break
 			}
 		}
 	}
