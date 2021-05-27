@@ -4,6 +4,9 @@ import (
 	"sort"
 )
 
+//和官方对比
+//缺点:
+//1.逻辑复杂,从两头分别移动,实际上second移动可以用第二层,第三层想official一样加上>判断,third的重复判断也就不用做了
 func threeSum(nums []int) [][]int {
 	ans := make([][]int, 0)
 	l := len(nums)
