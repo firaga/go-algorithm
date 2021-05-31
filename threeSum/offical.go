@@ -30,11 +30,14 @@ func officialThreeSum(nums []int) [][]int {
 			// 就不会有满足 a+b+c=0 并且 b<c 的 c 了，可以退出循环
 			if second == third {
 				break
+				//goto end
+				//只能证明b移动不会有结果了,并不能证明a不能移动
 			}
 			if nums[second]+nums[third] == target {
 				ans = append(ans, []int{nums[first], nums[second], nums[third]})
 			}
 		}
 	}
+	//end:
 	return ans
 }
