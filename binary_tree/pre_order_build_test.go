@@ -6,5 +6,9 @@ import "testing"
 //扩充二叉树 前序构建 https://cloud.tencent.com/developer/article/1176915
 //input abc##de#g##f###
 func TestPreBuild(t *testing.T) {
+}
+
+//已知 前序 中序序列,创建
+func TestPreBuild2(t *testing.T) {
 
 }
