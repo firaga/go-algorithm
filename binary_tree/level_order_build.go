@@ -27,10 +27,40 @@ func levelOrderBuild(input []int, i int) *Node {
 }
 
 // LevelOrderBuild2 非递归
+type qi struct {
+	i int
+	n *Node
+}
+
 func LevelOrderBuild2(input []int) *Node {
-	return &Node{
-		value: 0,
+	q := NewQueue()
+	i := 0
+	node := &Node{
+		value: input[i],
 		left:  nil,
 		right: nil,
 	}
+	q.Add(qi{i: i, n: node})
+	for {
+		e := q.Get()
+		if e == nil {
+			break
+		}
+		itemIndex := e.(qi).i
+		item := e.(qi).n
+		var l, r *Node
+		if 2*itemIndex+1 < len(input) && input[2*itemIndex+1] != 0 {
+			l = &Node{value: input[2*itemIndex+1]}
+			i++
+			q.Add(qi{i, l})
+		}
+		item.left = l
+		if 2*itemIndex+2 < len(input) && input[2*itemIndex+2] != 0 {
+			r = &Node{value: input[2*itemIndex+2]}
+			i++
+			q.Add(qi{i, r})
+		}
+		item.right = r
+	}
+	return node
 }
