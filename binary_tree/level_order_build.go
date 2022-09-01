@@ -6,6 +6,7 @@ package binary_tree
 type Input struct {
 }
 
+// LevelOrderBuild 递归
 func LevelOrderBuild(input []int) *Node {
 	return levelOrderBuild(input, 0)
 }
@@ -23,4 +24,13 @@ func levelOrderBuild(input []int, i int) *Node {
 	node.right = levelOrderBuild(input, 2*i+2)
 
 	return node
+}
+
+// LevelOrderBuild2 非递归
+func LevelOrderBuild2(input []int) *Node {
+	return &Node{
+		value: 0,
+		left:  nil,
+		right: nil,
+	}
 }
