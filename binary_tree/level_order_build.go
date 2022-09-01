@@ -11,7 +11,7 @@ func LevelOrderBuild(input []int) *Node {
 }
 
 func levelOrderBuild(input []int, i int) *Node {
-	if len(input) == 0 || i >= len(input) {
+	if len(input) == 0 || i >= len(input) || input[i] == 0 {
 		return nil
 	}
 	node := &Node{
