@@ -20,19 +20,21 @@ func PreOrderNonRecursion(node *Node) {
 	stack := NewStack()
 	cur := node
 	for {
-		if cur != nil && stack.Len() == 0 {
+		if cur != nil || stack.Len() != 0 {
 			for {
 				if cur == nil {
 					break
 				}
-				fmt.Println(cur.value)
+				fmt.Print(strconv.Itoa(cur.value) + " ")
 				stack.Push(cur)
 				cur = cur.left
 			}
 			if stack.Len() != 0 {
 				cur = stack.Pop().(*Node)
-				cur = cur.left
+				cur = cur.right
 			}
+		} else {
+			break
 		}
 	}
 }
