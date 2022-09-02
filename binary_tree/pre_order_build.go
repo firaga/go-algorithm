@@ -1,5 +1,8 @@
 package binary_tree
 
+//前序遍历
+
+//方法1 扩充二叉树字符串
 //func PreBuild(in string) *Node {
 //slice := []string{in}
 //for _, s := range slice {
@@ -9,6 +12,7 @@ package binary_tree
 //return root
 //}
 
+//方法2 已知 前序 中序序列,创建
 func preBuild() {
 
 }
