@@ -9,6 +9,10 @@ import (
 //扩充二叉树 前序构建 https://cloud.tencent.com/developer/article/1176915
 //input abc##de#g##f###
 func TestPreBuild(t *testing.T) {
+	in := []string{"1", "2", "#", "#", "3", "6", "7"}
+	fmt.Println(in)
+	res := PreBuild(in)
+	fmt.Println(res)
 }
 
 //已知 前序 中序序列,创建

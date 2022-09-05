@@ -1,16 +1,35 @@
 package binary_tree
 
+import "strconv"
+
 //前序遍历
 
 //方法1 扩充二叉树字符串
-//func PreBuild(in string) *Node {
-//slice := []string{in}
-//for _, s := range slice {
-//
-//}
-//var root *Node
-//return root
-//}
+// https://www.dounaite.com/article/6268ad277b5653d739b7b667.html
+
+func PreBuild(in []string) *Node {
+	i := 0
+	return preBuild(in, &i)
+}
+
+func preBuild(in []string, i *int) *Node {
+	if *i >= len(in) {
+		return nil
+	}
+	v := in[*i]
+	if v == "#" {
+		*i++
+		return nil
+	}
+	vv, _ := strconv.Atoi(v)
+	*i++
+	node := Node{
+		value: vv,
+		left:  preBuild(in, i),
+		right: preBuild(in, i),
+	}
+	return &node
+}
 
 //preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
 
