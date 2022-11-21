@@ -1,6 +1,7 @@
 package reverse
 
 import (
+	"math"
 	"testing"
 )
 
@@ -18,9 +19,10 @@ func TestReverse(t *testing.T) {
 		value       int
 		expectValue int
 	}{
-		//{1000, 1},
+		{math.MaxInt32, 0},
+		{math.MinInt32, 0},
 		{123, 321},
-		//{-123, -321},
+		{-123, -321},
 	}
 	for _, test := range tests {
 		expected := test.expectValue
@@ -35,10 +37,18 @@ func TestReverse(t *testing.T) {
 // 整数反转
 
 func Reverse(x int) int {
-	ret := 0
+	var ret int
+	ret = 0
 	for x != 0 {
 		rem := x % 10
 		x = x / 10
+		//int32越界检查
+		if ret > math.MaxInt32/10 || ret == math.MaxInt32/10 && rem >= math.MaxInt32%10 {
+			return 0
+		}
+		if ret < math.MinInt32/10 || ret == math.MinInt32/10 && rem <= math.MinInt32%10 {
+			return 0
+		}
 		ret = ret*10 + rem
 	}
 	return ret
