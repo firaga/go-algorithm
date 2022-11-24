@@ -9,6 +9,7 @@ func TestGen(t *testing.T) {
 	n := 5
 	res := generateParenthesis(n)
 	fmt.Println(res)
+	fmt.Println(len(res))
 }
 
 //穷举法
