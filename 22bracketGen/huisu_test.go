@@ -12,7 +12,9 @@ func TestGen2(t *testing.T) {
 	fmt.Println(len(res))
 }
 
-//穷举法
+//回溯 + 剪枝
+//本质是利用递归dfs穷举 + 剪枝
+//剪枝条件需要通过话dfs树来寻找条件
 func generateParenthesis2(n int) []string {
 	var result []string
 	dfs2("", n, n, 2*n, &result)
