@@ -8,8 +8,24 @@ import (
 func TestJump(t *testing.T) {
 	//arr := []int{2, 3, 0, 1, 4}
 	arr := []int{1, 2, 1, 1, 1}
-	rs := jump(arr)
+	rs := jump2(arr)
 	fmt.Println(rs)
+}
+
+//贪婪,不太会, 多看看
+func jump2(nums []int) int {
+	length := len(nums)
+	end := 0
+	maxPosition := 0
+	steps := 0
+	for i := 0; i < length-1; i++ {
+		maxPosition = max(maxPosition, i+nums[i])
+		if i == end {
+			end = maxPosition
+			steps++
+		}
+	}
+	return steps
 }
 
 //递归实现
@@ -34,6 +50,14 @@ func jump(nums []int) int {
 
 func min(a int, b int) int {
 	if a <= b {
+		return a
+	} else {
+		return b
+	}
+}
+
+func max(a int, b int) int {
+	if a >= b {
 		return a
 	} else {
 		return b
