@@ -2,17 +2,22 @@ package _1decode
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestDecode(t *testing.T) {
-	//s := "226"
-	//s := "06"
-	//s := "10"
-	//s := "2101"
-	s := "1201234"
-	rs := numDecodings(s)
-	fmt.Println(rs)
+	test := map[string]int{
+		"226":     3,
+		"06":      0,
+		"10":      1,
+		"2101":    1,
+		"1201234": 3,
+	}
+	for s, i := range test {
+		rs := numDecodings(s)
+		assert.Equal(t, i, rs)
+	}
 }
 
 func numDecodings(s string) int {
@@ -24,6 +29,8 @@ func numDecodings(s string) int {
 var allResult []string
 var stringMap map[string]string
 
+//leetcode 内存超限
+//ps: 未找到缓存尺度
 func backTracking(s string) int {
 	allResult = []string{}
 	stringMap = map[string]string{
@@ -75,10 +82,8 @@ func dfs(result string, start int, s string) {
 	}
 }
 
-func backTrackingCache(s string) int {
-	return 0
-}
-
+// 单字符  dp[i] = dp[i-1]
+// 双字符  dp[i] = dp[i-2]
 func dp(s string) int {
 	return 0
 }
