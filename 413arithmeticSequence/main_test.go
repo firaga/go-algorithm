@@ -24,7 +24,7 @@ func TestAS(t *testing.T) {
 	}
 }
 func numberOfArithmeticSlices(nums []int) int {
-	return violence(nums)
+	return doublePtr(nums)
 }
 
 func violence(nums []int) int {
@@ -48,4 +48,20 @@ func isAs(nums []int, s int, e int) bool {
 		}
 	}
 	return true
+}
+
+func doublePtr(nums []int) int {
+	l := len(nums)
+	var res int
+	for i := 0; i < l-2; i++ {
+		d := nums[i+1] - nums[i]
+		for j := i + 2; j < l; j++ {
+			if nums[j]-nums[j-1] == d {
+				res++
+			} else {
+				break
+			}
+		}
+	}
+	return res
 }
