@@ -21,9 +21,12 @@ func TestDecode(t *testing.T) {
 }
 
 func numDecodings(s string) int {
-	backTracking(s)
-	fmt.Println(allResult)
-	return len(allResult)
+	//backTracking(s)
+	//fmt.Println(allResult)
+	//return len(allResult)
+	rs := dps(s)
+	fmt.Println(rs)
+	return rs
 }
 
 var allResult []string
@@ -84,6 +87,26 @@ func dfs(result string, start int, s string) {
 
 // 单字符  dp[i] = dp[i-1]
 // 双字符  dp[i] = dp[i-2]
-func dp(s string) int {
-	return 0
+func dps(s string) int {
+	dp := make(map[int]int, len(s))
+	if s[0]-'0' == 0 {
+		return 0
+	}
+	dp[0] = 1
+	for i := 1; i < len(s); i++ {
+		if (s[i] - '0') != 0 {
+			dp[i] += dp[i-1]
+		}
+		if s[i-1]-'0' != 0 {
+			tmp := (s[i-1]-'0')*10 + s[i] - '0'
+			if tmp >= 1 && tmp <= 26 {
+				if i > 1 {
+					dp[i] += dp[i-2]
+				} else {
+					dp[i] += 1
+				}
+			}
+		}
+	}
+	return dp[len(s)-1]
 }
