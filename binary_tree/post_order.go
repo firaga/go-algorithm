@@ -5,20 +5,20 @@ import (
 	"strconv"
 )
 
-func InOrder(node *Node) {
+func PostOrder(node *Node) {
 	if node == nil {
 		return
 	}
-	InOrder(node.left)
+	PostOrder(node.left)
+	PostOrder(node.right)
 	fmt.Print(strconv.Itoa(node.value) + " ")
-	InOrder(node.right)
 }
-
-func InOrderNonRecursive(node *Node) {
+func PostOrderNonRecursive(node *Node) {
 	s := NewStack()
+	lastPop := node
 	cur := node
 	for {
-		if s.Len() == 0 && cur == nil {
+		if cur == nil && s.Len() == 0 {
 			break
 		}
 		for {
@@ -28,9 +28,13 @@ func InOrderNonRecursive(node *Node) {
 			s.Push(cur)
 			cur = cur.left
 		}
-		if s.length != 0 {
-			cur = s.Pop().(*Node)
+		cur = s.Peek().(*Node)
+		if cur.right == nil || cur.right == lastPop {
+			_ = s.Pop().(*Node)
 			fmt.Print(strconv.Itoa(cur.value) + " ")
+			lastPop = cur
+			cur = nil
+		} else {
 			cur = cur.right
 		}
 	}
