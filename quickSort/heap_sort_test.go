@@ -12,5 +12,7 @@ func TestHeapSort(t *testing.T) {
 	fmt.Println(arr)
 }
 func TestTopK(t *testing.T) {
-
+	arr := []int{-1, 3, 4, 2, 0, 9}
+	rs := topK(arr, 3)
+	fmt.Println(rs)
 }

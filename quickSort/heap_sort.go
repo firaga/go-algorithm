@@ -10,6 +10,20 @@ func headSort(arr []int) {
 	}
 }
 
+func topK(arr []int, k int) int {
+	buildHeap(arr, len(arr))
+	heapSize := len(arr)
+	var res int
+	for k > 0 { //heapSize ==1 时不需要继续执行,因为--后堆的大小为0
+		res = arr[0]
+		swap(arr, 0, heapSize-1)
+		k--
+		heapSize--
+		heapify(arr, heapSize, 0)
+	}
+	return res
+}
+
 func buildHeap(arr []int, len int) {
 	lastNoLeafNodeIndex := len/2 - 1
 	for i := lastNoLeafNodeIndex; i >= 0; i-- {
