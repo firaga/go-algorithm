@@ -3,7 +3,7 @@ package quickSort
 func headSort(arr []int) {
 	buildHeap(arr, len(arr))
 	heapSize := len(arr)
-	for heapSize > 1 { //heapSize ==1 时不需要继续执行
+	for heapSize > 1 { //heapSize ==1 时不需要继续执行,因为--后堆的大小为0
 		swap(arr, 0, heapSize-1)
 		heapSize--
 		heapify(arr, heapSize, 0)
