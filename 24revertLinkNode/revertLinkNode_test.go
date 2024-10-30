@@ -29,6 +29,19 @@ func reverseList(head *ListNode) *ListNode {
 	return prev
 }
 
+func reverseRecursive(head *ListNode) *ListNode {
+	return do(nil, head)
+}
+
+func do(prev *ListNode, now *ListNode) *ListNode {
+	if now == nil {
+		return prev
+	}
+	res := do(now, now.Next)
+	now.Next = prev
+	return res
+}
+
 func TestReverseList(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 5}
 	var head, node, tmp *ListNode
@@ -49,7 +62,14 @@ func TestReverseList(t *testing.T) {
 		}
 	}
 
-	head = reverseList(head)
+	//head = reverseList(head)
+	//
+	//for head != nil {
+	//	fmt.Println(head.Val)
+	//	head = head.Next
+	//}
+
+	head = reverseRecursive(head)
 
 	for head != nil {
 		fmt.Println(head.Val)
