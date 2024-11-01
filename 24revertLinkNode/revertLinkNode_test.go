@@ -26,6 +26,7 @@ func reverseList(head *ListNode) *ListNode {
 		prev = now
 		now = next
 	}
+
 	return prev
 }
 
